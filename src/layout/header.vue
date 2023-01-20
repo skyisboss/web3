@@ -17,7 +17,7 @@
       <q-btn flat>
         <span class="text-positive">注册</span>
       </q-btn>
-      <q-btn class="my-btn" color="primary" text-color="white" label="登录" unelevated />
+      <q-btn class="my-btn" color="positive" text-color="white" label="登录" unelevated />
       <q-btn icon="question_answer" unelevated square dense @click="emit('toggleChat')">
         <q-badge color="positive" floating>22</q-badge>
       </q-btn>

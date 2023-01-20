@@ -1,9 +1,30 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
+
+const themes = ref({
+  active: 'light',
+  data: [
+    {label: '白天', key: 'light', icon: 'light_mode'},
+    {label: '夜晚', key: 'dark', icon: 'dark_mode'},
+  ]
+})
+const setTheme = (value: string) => {
+  const el = document.querySelector('body')
+  if (el) {
+    themes.value.active = value
+    if (value == 'light') {
+      el.classList.remove('body--dark')
+      el.classList.add('body--light')
+    } else {
+      el.classList.remove('body--light')
+      el.classList.add('body--dark')
+    }
+  }
+}
+
 const props = defineProps(['toggle'])
 const toggle = ref(props.toggle)
-
 watch(() => props.toggle, n => toggle.value = n)
 </script>
 
@@ -14,6 +35,7 @@ watch(() => props.toggle, n => toggle.value = n)
 		:width="$q.screen.width > 500 ? 256 : $q.screen.width"
 		:breakpoint="500"
 		:behavior="$q.screen.width > 500 ? 'desktop' : 'mobile'"
+    class="lt-side"
 	>
 		<q-scroll-area class="fit">
       <div class="q-pa-md">
@@ -44,8 +66,17 @@ watch(() => props.toggle, n => toggle.value = n)
       <div class="absolute full-width">
         <div class="q-pa-md q-gutter-y-md">
           <q-btn-group spread unelevated>
-            <q-btn label="白天" unelevated color="secondary" text-color="primary" icon="light_mode" />
-            <q-btn label="夜晚" unelevated color="grey-3" text-color="default" icon="dark_mode" />
+            <q-btn 
+              v-for="theme in themes.data"
+              :key="theme.key"
+              :label="theme.label" 
+              unelevated 
+              :color="themes.active == theme.key ? 'secondary' : 'grey-3'" 
+              :text-color="themes.active == theme.key ? 'primary' : 'default'" 
+              :icon="theme.icon" 
+              @click="setTheme(theme.key)"
+            />
+            <!-- <q-btn label="夜晚" unelevated color="grey-3" text-color="default" icon="dark_mode" @click="setTheme('dark')"/> -->
           </q-btn-group>
           <q-btn-dropdown spread unelevated color="grey-3" text-color="default" label="简体中文" class="full-width">
             <q-list>
@@ -69,4 +100,5 @@ watch(() => props.toggle, n => toggle.value = n)
 	</q-drawer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

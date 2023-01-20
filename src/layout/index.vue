@@ -42,9 +42,29 @@ html, body {
 
   --body-color: #eff4ff;
 
+  --left-side-color: #ffffff;
+
   --footer-color: #ffffff;
   --footer-text-color: #557086;
   --footer-text-paimary-color: #2c3e50;
+}
+.body--dark {
+  --header-color: #0a1929b8;
+
+  --body-color: #1a2c38;
+  --left-side-color: #0a1929;
+
+  --footer-color: #0a1929;
+  --footer-text-color: #557086; //#788cb1;
+
+  --q-primary: #63e2b7 !important;
+  --q-secondary: #63e2b733 !important;
+  .bg-grey-3 {
+    background: #ffffff1a !important;
+  }
+}
+.lt-side {
+  background-color: var(--left-side-color);
 }
 .page-content {
   margin-left: auto;

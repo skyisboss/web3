@@ -7,6 +7,7 @@ import { Quasar } from 'quasar'
 import '@quasar/extras/material-icons/material-icons.css'
 // Import Quasar css
 import 'quasar/src/css/index.sass'
+import './index.css'
 
 createApp(App)
   .use(Quasar, {
@@ -21,7 +22,7 @@ createApp(App)
 
         'default-black': '#333639',
   
-        positive: '#35c31e',
+        positive: '#31d089', //'#35c31e',
         negative: '#C10015',
         info: '#31CCEC',
         warning: '#F2C037'
